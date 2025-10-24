@@ -28,7 +28,7 @@ window.ChatPeer = (function () {
     // Peer id strategy:
     // creator: peerId == roomId
     // joiner: peerId == `${roomId}:${random}`
-    const pid = isCreator ? roomId : `${roomId}:${ChatUtil.randSuffix()}`;
+    const pid = isCreator ? roomId : undefined;
     my.peerId = pid;
 
     // create PeerJS peer
