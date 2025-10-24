@@ -34,7 +34,7 @@ window.ChatPeer = (function () {
     // create PeerJS peer
     peer = new Peer(pid, {
   debug: 2,
-  host: 'peerjs.com',
+  host: '0.peerjs.com',
   port: 443,
   secure: true,
   path: '/',
