@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Serverless Encrypted Peer Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <header>
+      <h1>Serverless Encrypted Peer Chat</h1>
+    </header>
+
+    <section id="setup" class="card">
+      <h2>Join or Create a Room</h2>
+
+      <div class="row">
+        <label>Username</label>
+        <input id="username" placeholder="Optional display name" />
+      </div>
+
+      <div class="row">
+        <label>Room</label>
+        <input id="roomInput" placeholder="Leave empty to generate new room" />
+        <button id="generateRoomBtn">Generate Room</button>
+      </div>
+
+      <div class="row">
+        <label>Local storage key</label>
+        <input id="localKeyInput" placeholder="Paste base64 local key or generate" />
+        <button id="genLocalKeyBtn">Generate Key</button>
+        <button id="exportLocalKeyBtn">Export</button>
+      </div>
+
+      <div class="row">
+        <label>Role</label>
+        <select id="roleSelect">
+          <option value="create">Create (be room owner)</option>
+          <option value="join">Join</option>
+        </select>
+      </div>
+
+      <div class="row actions">
+        <button id="startBtn">Start</button>
+      </div>
+
+      <div id="inviteArea" class="row hidden">
+        <label>Invite link</label>
+        <input id="inviteLink" readonly />
+        <button id="copyInviteBtn">Copy</button>
+      </div>
+
+      <div id="status" class="row status">Ready.</div>
+    </section>
+
+    <section id="chat" class="card hidden">
+      <div class="chat-header">
+        <div><strong id="roomLabel"></strong></div>
+        <div id="peerIdLabel" class="muted"></div>
+      </div>
+
+      <div id="participants" class="muted small">Participants: <span id="participantsList">—</span></div>
+
+      <ul id="messages"></ul>
+
+      <div class="send-row">
+        <input id="messageInput" placeholder="Type a message or paste a link" />
+        <button id="sendBtn">Send</button>
+      </div>
+    </section>
+
+    <footer class="muted small">
+      Built for static hosting. Uses PeerJS for signaling. Keep your local key safe — it encrypts only your local storage.
+    </footer>
+  </main>
+
+  <!-- PeerJS CDN -->
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+
+  <!-- Modules (namespaced to window.Chat*) -->
+  <script src="src/util.js"></script>
+  <script src="src/crypto.js"></script>
+  <script src="src/storage.js"></script>
+  <script src="src/peer.js"></script>
+  <script src="src/chatUI.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
