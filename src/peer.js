@@ -62,6 +62,7 @@ window.ChatPeer = (function () {
       } else {
         // joiner -> connect to creator
         console.log('joiner');
+        roomKey = roomId;
         connectToPeer(roomId);
       }
     });
